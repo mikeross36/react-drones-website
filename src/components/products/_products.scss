@@ -1,0 +1,74 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.products {
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+
+        @include mixins.breakpoint-down(small){
+            grid-template-columns: repeat(1, 180px);
+            justify-content: center;
+        }
+
+        @include mixins.breakpoint-up(medium){
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include mixins.breakpoint-up(large){
+            padding-top: 2rem;
+        }
+
+        .products__card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 1rem 0;
+            border: 1px solid $borderCrl;
+            text-align: center;
+            transition: .3s;
+            border-radius: 5px;
+
+            &:hover {
+                box-shadow: 0px 5px 10px 0px rgba(255,255,255,0.7);
+            }
+
+            @include mixins.breakpoint-up(medium){
+                padding: 2rem 0;
+            }
+
+            .products__img {
+                height: 125px;
+                margin: 0 auto;
+
+                @include mixins.breakpoint-up(medium){
+                    height: 155px;
+                }
+            }
+
+            .products__title,
+            .products__price {
+                font-size: $fontSm;
+                font-weight: $weightMd;
+            }
+
+            .products__title {
+                text-transform: uppercase;
+                margin-bottom: $mb-0-75;
+            }
+
+            .products__price {
+                color: $firstClr;
+                margin-bottom: $mb-0-75;
+            }
+
+            .products__button {
+                padding: .4rem;
+                font-size: $fontSm;
+                margin-bottom: $mb-0-75;
+            }
+        }
+    }
+}
