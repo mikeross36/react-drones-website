@@ -29,14 +29,17 @@ const Header = () => {
 
     const openMobMenu = () => {
         setShowMobMenu(true)
-    }
-
-    const toggleSearchForm = () => {
-        setShowSearchForm(!showSearchForm)
+        if (showSearchForm) {
+            setShowSearchForm(false)
+        }
     }
 
     const closeMobMenu = () => {
         setShowMobMenu(false)
+    }
+
+    const toggleSearchForm = () => {
+        setShowSearchForm(!showSearchForm)
     }
 
     return (
