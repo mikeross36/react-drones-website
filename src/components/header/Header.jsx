@@ -4,9 +4,11 @@ import closebtn from "../../images/close-btn.svg"
 import { links } from "./data"
 import shoppingCart from "../../images/shopping-cart2.svg"
 import menubtn from "../../images/menu-btn.svg"
+import searchIcon from "../../images/search-icon.svg"
 
 const Header = () => {
     const [showMobMenu, setShowMobMenu] = useState(false)
+    const [showSearchForm, setShowSearchForm] = useState(false)
     const [srollHeader, setScrollHeader] = useState(false)
 
     useEffect(() => {
@@ -27,6 +29,10 @@ const Header = () => {
 
     const openMobMenu = () => {
         setShowMobMenu(true)
+    }
+
+    const toggleSearchForm = () => {
+        setShowSearchForm(!showSearchForm)
     }
 
     const closeMobMenu = () => {
@@ -57,6 +63,9 @@ const Header = () => {
                     </button>
                 </div>
                 <menu className="nav__btns">
+                    <button className="nav__search" onClick={toggleSearchForm}>
+                       <img src={searchIcon} alt="search icon" width="30px" height="30px"/>
+                    </button>
                     <button className="nav__shop">
                        <img src={shoppingCart} alt="shopping cart" width="40px" height="40px"/>
                     </button>
@@ -64,6 +73,9 @@ const Header = () => {
                         <img src={menubtn} alt="menu btn" width="30px" height="30px"/>
                     </button>
                 </menu>
+                <div className={`nav__search-form ${showSearchForm && "active-form"}`}>
+                    <input type="search" className="nav__search-input" placeholder="search here..."/>
+                </div>
             </nav>
         </header>
     )

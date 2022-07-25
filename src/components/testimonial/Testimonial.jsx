@@ -39,7 +39,7 @@ const Testimonial = () => {
                                 return (
                                     <div key={id} className={`testimonial__slide ${position}`}>
                                         <div className="testimonial__quote">
-                                            <img src={quote} alt="quote" width="30px" height="30px" />
+                                            <img src={quote} alt="quote" width="30px" height="30px"/>
                                         </div>
                                         <p className="testimonial__description">{description}</p>
                                         <h3 className="testimonial__date">{date}</h3>

@@ -53,7 +53,7 @@
 
         @include mixins.breakpoint-up(medium){
             flex-direction: row;
-            column-gap: 4rem;
+            column-gap: calc(2rem + 5%);
         }
     }
 
@@ -61,8 +61,16 @@
         color: $titleClr;
         font-weight: $weightMd;
         text-transform: uppercase;
-        font-size: 1.5rem;
+        font-size: $fontSlg;
         transition: all .3s ease;
+        
+        @include mixins.breakpoint-up(medium){
+            font-size: 1.3rem
+        }
+
+        @include mixins.breakpoint-up(large) {
+            font-size: $fontSlg;
+        }
 
         &.active-link {
             color: $firstClr;
@@ -89,14 +97,16 @@
     .nav__btns {
         display: flex;
         align-items: center;
-        column-gap: 2rem;
+        column-gap: 1rem;
 
         @include mixins.breakpoint-up(medium) {
             margin-left: auto;
+            column-gap: 2rem;
         }
 
         .nav__toggle,
-        .nav__shop {
+        .nav__shop,
+        .nav__search {
             cursor: pointer;
             background: transparent;
         }
@@ -112,6 +122,38 @@
             @include mixins.breakpoint-up(medium) {
                 display: none;
             }
+        }
+    }
+
+    .nav__search-form {
+        position: absolute;
+        top: 125%;
+        right: 5%;
+        width: 90%;
+        height: 1rem;
+        display: flex;
+        align-items: center;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: .2s;
+
+        @include mixins.breakpoint-up(large){
+            width: 40rem;
+            top: 120%;
+            right: 17%;
+        }
+
+        &.active-form {
+            transform: scaleY(1);
+        }
+
+        .nav__search-input {
+            height: 100%;
+            width: 100%;
+            font-size: $fontMd;
+            color: $bodyClr;
+            padding: 1rem;
+            text-transform: none;
         }
     }
 }
